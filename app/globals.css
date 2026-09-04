@@ -1,26 +1,359 @@
 @import "tailwindcss";
 
+/* =========================================================
+   SMARTWATCH
+   Dark futuristic fintech theme
+   ========================================================= */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050708;
+  --foreground: #f4f7f6;
+
+  --panel: #0b0f10;
+  --panel-hover: #0e1314;
+
+  --border: #1c3038;
+  --border-blue: #214452;
+
+  --blue-glow: rgba(0, 174, 255, 0.16);
+  --blue-glow-strong: rgba(0, 174, 255, 0.28);
+
+  --green: #00d09c;
+  --green-soft: rgba(0, 208, 156, 0.09);
+
+  --red: #ff5361;
+  --red-soft: rgba(255, 83, 97, 0.09);
+
+  --muted: #829099;
+  --muted-dark: #56636a;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* =========================================================
+   BASE
+   ========================================================= */
+
+html {
+  background: #050708;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  margin: 0;
+  background: #050708;
+  color: #f4f7f6;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =========================================================
+   MAIN DASHBOARD
+   ========================================================= */
+
+main.min-h-screen {
+  background:
+    radial-gradient(
+      circle at 50% -20%,
+      rgba(0, 174, 255, 0.035),
+      transparent 40%
+    ),
+    #050708 !important;
+
+  color: #f4f7f6 !important;
+}
+
+/* =========================================================
+   MAJOR DASHBOARD PANELS
+   ========================================================= */
+
+main.min-h-screen .bg-white {
+  background: rgba(11, 15, 16, 0.94) !important;
+
+  border: 1px solid #1c3038 !important;
+
+  box-shadow:
+    0 0 0 1px rgba(0, 174, 255, 0.025),
+    0 0 18px rgba(0, 174, 255, 0.045),
+    inset 0 0 24px rgba(0, 174, 255, 0.018) !important;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+main.min-h-screen .bg-white:hover {
+  background: rgba(13, 18, 19, 0.98) !important;
+
+  border-color: #285363 !important;
+
+  box-shadow:
+    0 0 0 1px rgba(0, 174, 255, 0.05),
+    0 0 24px rgba(0, 174, 255, 0.09),
+    inset 0 0 28px rgba(0, 174, 255, 0.025) !important;
+}
+
+/* =========================================================
+   PANEL HEADINGS
+   ========================================================= */
+
+main.min-h-screen h1 {
+  color: #f7faf9 !important;
+  letter-spacing: -0.035em;
+}
+
+main.min-h-screen h2 {
+  color: #f2f6f4 !important;
+  letter-spacing: -0.025em;
+}
+
+/* =========================================================
+   TEXT
+   ========================================================= */
+
+main.min-h-screen .text-slate-900 {
+  color: #f4f7f6 !important;
+}
+
+main.min-h-screen .text-slate-800 {
+  color: #e8eeeb !important;
+}
+
+main.min-h-screen .text-slate-700 {
+  color: #d5dfdb !important;
+}
+
+main.min-h-screen .text-slate-600 {
+  color: #a1adb0 !important;
+}
+
+main.min-h-screen .text-slate-500 {
+  color: #829099 !important;
+}
+
+main.min-h-screen .text-slate-400 {
+  color: #5d6a71 !important;
+}
+
+/* =========================================================
+   PANEL BORDERS / DIVIDERS
+   ========================================================= */
+
+main.min-h-screen .border-slate-100,
+main.min-h-screen .border-slate-200 {
+  border-color: #1b2a30 !important;
+}
+
+main.min-h-screen .border-slate-300 {
+  border-color: #29414b !important;
+}
+
+/* =========================================================
+   POSITIVE VALUES
+   ========================================================= */
+
+main.min-h-screen .text-green-600,
+main.min-h-screen .text-green-500 {
+  color: #00d09c !important;
+
+  text-shadow: 0 0 10px rgba(0, 208, 156, 0.12);
+}
+
+main.min-h-screen .bg-green-50 {
+  background: rgba(0, 208, 156, 0.075) !important;
+}
+
+main.min-h-screen .border-green-100 {
+  border-color: rgba(0, 208, 156, 0.18) !important;
+}
+
+/* =========================================================
+   NEGATIVE VALUES
+   ========================================================= */
+
+main.min-h-screen .text-red-600,
+main.min-h-screen .text-red-500 {
+  color: #ff5361 !important;
+
+  text-shadow: 0 0 10px rgba(255, 83, 97, 0.12);
+}
+
+main.min-h-screen .bg-red-50 {
+  background: rgba(255, 83, 97, 0.065) !important;
+
+  border-color: rgba(255, 83, 97, 0.28) !important;
+}
+
+main.min-h-screen .border-red-100 {
+  border-color: rgba(255, 83, 97, 0.20) !important;
+}
+
+/* =========================================================
+   UNUSUAL ACTIVITY PANEL
+   ========================================================= */
+
+main.min-h-screen .bg-red-50 {
+  border-left: 2px solid #ff5361 !important;
+
+  box-shadow:
+    inset 0 0 18px rgba(255, 83, 97, 0.035),
+    0 0 12px rgba(255, 83, 97, 0.035) !important;
+}
+
+/* =========================================================
+   NEUTRAL INNER BOXES
+   ========================================================= */
+
+main.min-h-screen .bg-slate-50 {
+  background: #0e1314 !important;
+
+  border-color: #1c3038 !important;
+}
+
+main.min-h-screen .bg-slate-100 {
+  background: #121819 !important;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+main.min-h-screen .bg-slate-900 {
+  background: #00c795 !important;
+  color: #04100c !important;
+
+  box-shadow:
+    0 0 14px rgba(0, 208, 156, 0.08);
+}
+
+main.min-h-screen .bg-slate-900:hover {
+  background: #00d09c !important;
+
+  box-shadow:
+    0 0 20px rgba(0, 208, 156, 0.14);
+}
+
+/* Logout */
+
+main.min-h-screen button.border-slate-200 {
+  background: #090c0d !important;
+  color: #e7eeeb !important;
+
+  border-color: #26383f !important;
+}
+
+main.min-h-screen button.border-slate-200:hover {
+  background: #111718 !important;
+
+  border-color: #3b5965 !important;
+}
+
+/* =========================================================
+   GREEN LINKS
+   ========================================================= */
+
+main.min-h-screen .text-blue-600,
+main.min-h-screen .text-blue-700 {
+  color: #00d09c !important;
+}
+
+/* =========================================================
+   NEWS
+   ========================================================= */
+
+main.min-h-screen a.block {
+  border-color: #1b2a30 !important;
+}
+
+main.min-h-screen a.block:hover {
+  background: #0e1415 !important;
+}
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+input,
+textarea,
+select {
+  color: #f4f7f6;
+
+  background: #0d1213;
+
+  border: 1px solid #263940;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+
+  border-color: #00aef0;
+
+  box-shadow:
+    0 0 0 2px rgba(0, 174, 240, 0.08),
+    0 0 12px rgba(0, 174, 240, 0.06);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #56636a;
+}
+
+/* =========================================================
+   SUBTLE ELECTRONIC DIVIDERS
+   ========================================================= */
+
+main.min-h-screen hr {
+  border-color: #1b2a30;
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050708;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1c3038;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2c4c59;
+}
+
+/* =========================================================
+   SELECTION
+   ========================================================= */
+
+::selection {
+  background: rgba(0, 174, 240, 0.18);
+  color: #ffffff;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+  main.min-h-screen {
+    padding: 1rem !important;
+  }
+
+  main.min-h-screen .bg-white {
+    border-radius: 14px !important;
+  }
 }
