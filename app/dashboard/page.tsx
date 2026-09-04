@@ -181,9 +181,9 @@ const [showAllNews, setShowAllNews] = useState(false);
 // --------------------------------------------------
 
 useEffect(() => {
-  if (!user || !loaded) {
-    return;
-  }
+  if (!user || !loaded) return;
+
+  const currentUser = user;
 
   async function loadHoldings() {
     try {
@@ -196,7 +196,7 @@ useEffect(() => {
             symbol
           )
         `)
-        .eq("user_id", user.id);
+        .eq("user_id", currentUser.id);
 
       if (error) {
         throw error;
@@ -273,6 +273,8 @@ useEffect(() => {
     return;
   }
 
+  const currentUser = user;
+
   visitTrackingStarted.current = true;
 
   async function startVisit() {
@@ -284,7 +286,7 @@ useEffect(() => {
         await supabase
           .from("user_visit_history")
           .select("*")
-          .eq("user_id", user.id)
+          .eq("user_id", currentUser.id)
           .not("logout_at", "is", null)
           .order("logout_at", { ascending: false })
           .limit(1)
@@ -346,7 +348,7 @@ useEffect(() => {
               user.user_metadata?.full_name ||
               user.user_metadata?.name ||
               "User",
-            user_email: user.email,
+            user_email: currentUser.email,
             login_at: now.toISOString(),
             stock_prices: {},
           })
@@ -670,10 +672,16 @@ useEffect(() => {
                 </div>
 
                 <button
-  onClick={async () => {
-    try {
+onClick={async () => {
+  const currentUser = user;
+
+  if (!currentUser) {
+    return;
+  }
+
+  try {
       const activeVisitId = localStorage.getItem(
-        `smartwatch_active_visit_${user?.id}`
+        `smartwatch_active_visit_${currentUser.id}`
       );
 
       if (activeVisitId && user) {
@@ -692,7 +700,7 @@ useEffect(() => {
             stock_prices: stockPrices,
           })
           .eq("id", activeVisitId)
-          .eq("user_id", user.id);
+          .eq("user_id", currentUser.id);
 
         if (error) {
           console.error(
@@ -701,7 +709,7 @@ useEffect(() => {
           );
         } else {
           localStorage.removeItem(
-            `smartwatch_active_visit_${user.id}`
+            `smartwatch_active_visit_${currentUser.id}`
           );
         }
       }
