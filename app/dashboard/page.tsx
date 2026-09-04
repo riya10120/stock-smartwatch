@@ -343,7 +343,7 @@ useEffect(() => {
         await supabase
           .from("user_visit_history")
           .insert({
-            user_id: user.id,
+            user_id: currentUser.id,
             user_name:
               user.user_metadata?.full_name ||
               user.user_metadata?.name ||
@@ -362,7 +362,7 @@ useEffect(() => {
       // Remember which visit is currently active.
       if (newVisit?.id) {
         localStorage.setItem(
-          `smartwatch_active_visit_${user.id}`,
+          `smartwatch_active_visit_${currentUser.id}`,
           newVisit.id
         );
       }
