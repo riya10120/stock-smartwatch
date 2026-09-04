@@ -345,8 +345,8 @@ useEffect(() => {
           .insert({
             user_id: currentUser.id,
             user_name:
-              user.user_metadata?.full_name ||
-              user.user_metadata?.name ||
+              currentUser.user_metadata?.full_name ||
+              currentUser.user_metadata?.name ||
               "User",
             user_email: currentUser.email,
             login_at: now.toISOString(),
