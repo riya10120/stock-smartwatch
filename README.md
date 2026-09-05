@@ -3,6 +3,9 @@
 # SmartWatch
 
 > WATCH → LEAVE → RETURN → DETECT → EXPLAIN
+> ## Live Demo
+
+🚀 **Try SmartWatch:** [Open the Live Demo](https://stock-smartwatch-eedfvhv19-riya10120.vercel.app/)
 
 SmartWatch is a smart market watchlist built around one simple question:
 
